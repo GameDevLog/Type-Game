@@ -20,15 +20,26 @@ public class TypeGUI : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        esc |= Input.GetKeyDown(KeyCode.Escape);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("OnTriggerEnter2D");
+        if (collision.CompareTag("Word"))
         {
-            esc = true;
+            if (life > 0)
+            {
+                life -= 1;
+                WordSwapner.instance.midBreak = -1;
+                Destroy(collision.gameObject);
+            }
         }
     }
 
     void OnTriggerEnter(Collider other)        
     {
-        if (other.tag == "Word")
+        if (other.CompareTag("Word"))
         {   
             if (life > 0)
             {
@@ -69,7 +80,7 @@ public class TypeGUI : MonoBehaviour
 
             if (GUI.Button(new Rect(Screen.width / 2 - 200, Screen.height / 2 - 50, 400, 100), "Restart"))
             {
-                SceneManager.LoadScene(0);   
+                RestartGame();
             }
 
             if (GUI.Button(new Rect(Screen.width / 2 - 200, Screen.height / 2 + 100, 400, 100), "Quit"))
@@ -77,5 +88,11 @@ public class TypeGUI : MonoBehaviour
                 Application.Quit();
             }
         }
+    }
+
+    void RestartGame()
+    {
+        SceneManager.LoadScene(
+            SceneManager.GetActiveScene().name);
     }
 }

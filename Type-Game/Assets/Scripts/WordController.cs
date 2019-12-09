@@ -261,10 +261,6 @@ public class WordController : MonoBehaviour
                         TypeGUI.instance.highScore = TypeGUI.instance.score;
                     }
                 }
-                else
-                {
-                    print("Press 'Enter' to end!");
-                }
             }
         }
     }
