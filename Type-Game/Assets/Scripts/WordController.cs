@@ -254,11 +254,11 @@ public class WordController : MonoBehaviour
                 if (mytimer <= 0 && !isBlow)
                 {
                     isBlow = true;
-                    TypeGUI.instance.score += 1;
+                    GameController.instance.score += 1;
 
-                    if (TypeGUI.instance.score > TypeGUI.instance.highScore)
+                    if (GameController.instance.score > GameController.instance.highScore)
                     {
-                        TypeGUI.instance.highScore = TypeGUI.instance.score;
+                        GameController.instance.highScore = GameController.instance.score;
                     }
                 }
             }

@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class TypeGUI : MonoBehaviour
+public class GameController : MonoBehaviour
 {
     public int life;
-    public static TypeGUI instance;
+    public static GameController instance;
     public int score; 
     public int highScore;
     public GUISkin skin;
